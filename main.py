@@ -22,7 +22,7 @@ ja_target = ja_soup.find('div', attrs={'class': 'col-md-8 country-pop-descriptio
 us_target = us_soup.find('div', attrs={'class': 'col-md-8 country-pop-description'}).find_all_next('strong')[1]
 ch_target = ch_soup.find('div', attrs={'class': 'col-md-8 country-pop-description'}).find_all_next('strong')[1]
 
-text = f'【人口取得】\n日時: {datetime.now(jst).ctime()}\n\n日本: {ja_target.text}\nアメリカ: {us_target.text}\n中国: {ch_target.text}\n\n取得元: https://www.worldometers.info/'
+text = f'【人口情報】\n日時: {datetime.now(jst).ctime()}\n\n日本: {ja_target.text}\nアメリカ: {us_target.text}\n中国: {ch_target.text}\n\n取得元: https://www.worldometers.info/'
 
 payload = {"text": text}
 
