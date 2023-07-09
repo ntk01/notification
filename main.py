@@ -84,9 +84,8 @@ def main(p, q):
   setPopulation(japan, today, ja_cnt)
   setPopulation(us, today, us_cnt)
   setPopulation(china, today, ch_cnt)
-  # res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
-  # print(res)
-  print(payload)
+  res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
+  print(res)
 
 if __name__ == '__main__':
   main()
