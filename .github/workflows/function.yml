@@ -27,7 +27,6 @@ jobs:
         with:
           workload_identity_provider: $WORKLOAD_IDENTITY_PROVIDER
           service_account: $SERVICE_ACCOUNT
-          audience: 'https://github.com/ntk01'
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
         with:
