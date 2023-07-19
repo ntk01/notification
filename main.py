@@ -26,7 +26,7 @@ def main(p, q):
     part='snippet',
     q=query,
     maxResults=5,
-    order='date',
+    order='rating',
     type='video',
   ).execute()
   for i in range(5):
