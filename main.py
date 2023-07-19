@@ -23,6 +23,7 @@ oauth = OAuth1Session(
 
 def main(p, q):
   res = youtube.search().list(
+    part='snippet',
     q=query,
     order='viewCount',
     type='video',
