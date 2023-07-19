@@ -1,5 +1,6 @@
 from requests_oauthlib import OAuth1Session
 import os
+import random
 from googleapiclient.discovery import build
 from datetime import datetime, timezone, timedelta
 
@@ -25,15 +26,20 @@ def main(p, q):
   res = youtube.search().list(
     part='snippet',
     q=query,
-    maxResults=5,
-    order='rating',
+    maxResults=1000,
+    order='viewCount',
     type='video',
   ).execute()
-  for i in range(5):
-    if res['items'][i]['id']['videoId']:
-      url = f'https://www.youtube.com/watch?v={res["items"][i]["id"]["videoId"]}'
-      payload = {"text": f'{date.ctime()}\n{url}'}
-      oauth.post("https://api.twitter.com/2/tweets", json=payload)
+  rand = randrom.randrange(0, 1000)
+  url = f'https://www.youtube.com/watch?v={res["items"][rand]["id"]["videoId"]}'
+  payload = {"text": f'{date.ctime()}\n{url}'}
+  oauth.post("https://api.twitter.com/2/tweets", json=payload)
+
+  # for i in range(5):
+  #   if res['items'][i]['id']['videoId']:
+  #     url = f'https://www.youtube.com/watch?v={res["items"][i]["id"]["videoId"]}'
+  #     payload = {"text": f'{date.ctime()}\n{url}'}
+  #     oauth.post("https://api.twitter.com/2/tweets", json=payload)
 
 if __name__ == '__main__':
   main()
