@@ -10,8 +10,6 @@ access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
 
 jst = timezone(timedelta(hours=+9), 'JST')
 date = datetime.now(jst)
-today = date.strftime('%Y-%m-%d')
-day = datetime.strftime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 token = 'AIzaSyAKMLTjQo6_MiQ5kSTH04M0BZvuYLcEZvU'
 query = 'vocaloid'
 youtube = build('youtube', 'v3', developerKey=token)
@@ -27,9 +25,9 @@ def main(p, q):
   res = youtube.search().list(
     part='snippet',
     q=query,
-    order='viewCount',
+    maxResults=5,
+    order='date',
     type='video',
-    publishedAfter=day,
   ).execute()
   for i in range(5):
     if res['items'][i]['id']['videoId']:
