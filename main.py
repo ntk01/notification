@@ -1,7 +1,6 @@
 from requests_oauthlib import OAuth1Session
 import os
-import requests
-from bs4 import BeautifulSoup
+from googleapiclient.discovery import build
 from datetime import datetime, timezone, timedelta
 
 consumer_key = os.environ.get('CONSUMER_KEY')
@@ -13,7 +12,7 @@ jst = timezone(timedelta(hours=+9), 'JST')
 date = datetime.now(jst)
 token = 'AIzaSyAKMLTjQo6_MiQ5kSTH04M0BZvuYLcEZvU'
 query = 'vocaloid'
-query_url = f'https://www.googleapis.com/youtube/v3/search?key={token}&type=video&part=snippet&q={query}'
+youtube = build('youtube', 'v3', developerKey=token)
 
 oauth = OAuth1Session(
     consumer_key,
@@ -23,7 +22,12 @@ oauth = OAuth1Session(
 )
 
 def main(p, q):
-  res = requests.get(query_url).json()
+  res = youtube.search().list(
+    q=query,
+    order='viewCount',
+    type='video',
+    publishedAfter=datetime.now().isoformat()+"Z",
+  ).execute()
   for i in range(5):
     if res['items'][i]['id']['videoId']:
       url = f'https://www.youtube.com/watch?v={res["items"][i]["id"]["videoId"]}'
