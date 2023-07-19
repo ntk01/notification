@@ -33,6 +33,7 @@ def main(p, q):
   rand = random.randrange(0, 50)
   url = f'https://www.youtube.com/watch?v={res["items"][rand]["id"]["videoId"]}'
   payload = {"text": f'{date.ctime()}\n{url}'}
+  print(payload)
   oauth.post("https://api.twitter.com/2/tweets", json=payload)
 
   # for i in range(5):
