@@ -23,7 +23,7 @@ oauth = OAuth1Session(
 )
 
 def main(p, q):
-  res = youtube.search().list(
+  result = youtube.search().list(
     part='snippet',
     q=query,
     maxResults=50,
@@ -31,10 +31,11 @@ def main(p, q):
     type='video',
   ).execute()
   rand = random.randrange(0, 50)
-  url = f'https://www.youtube.com/watch?v={res["items"][rand]["id"]["videoId"]}'
+  url = f'https://www.youtube.com/watch?v={result["items"][rand]["id"]["videoId"]}'
   payload = {"text": f'{date.ctime()}\n{url}'}
   print(payload)
-  oauth.post("https://api.twitter.com/2/tweets", json=payload)
+  res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
+  print(res)
 
   # for i in range(5):
   #   if res['items'][i]['id']['videoId']:
