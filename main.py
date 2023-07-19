@@ -30,7 +30,7 @@ def main(p, q):
     order='viewCount',
     type='video',
   ).execute()
-  rand = randrom.randrange(0, 1000)
+  rand = random.randrange(0, 1000)
   url = f'https://www.youtube.com/watch?v={res["items"][rand]["id"]["videoId"]}'
   payload = {"text": f'{date.ctime()}\n{url}'}
   oauth.post("https://api.twitter.com/2/tweets", json=payload)
