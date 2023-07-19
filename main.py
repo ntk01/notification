@@ -26,11 +26,11 @@ def main(p, q):
   res = youtube.search().list(
     part='snippet',
     q=query,
-    maxResults=1000,
+    maxResults=50,
     order='viewCount',
     type='video',
   ).execute()
-  rand = random.randrange(0, 1000)
+  rand = random.randrange(0, 50)
   url = f'https://www.youtube.com/watch?v={res["items"][rand]["id"]["videoId"]}'
   payload = {"text": f'{date.ctime()}\n{url}'}
   oauth.post("https://api.twitter.com/2/tweets", json=payload)
