@@ -15,10 +15,9 @@ oauth = OAuth1Session(
     resource_owner_secret=access_token_secret,
 )
 
-text = r.getText()
-payload = {"text": text}
-
 def main(p, q):
+  text = r.getText()
+  payload = {"text": text}
   print(payload)
   # res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
   r.setOne()
