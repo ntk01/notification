@@ -21,7 +21,8 @@ payload = {"text": text}
 def main(p, q):
   print(payload)
   # res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
-  print(res)
+  r.setOne()
+  # print(res)
 
 if __name__ == '__main__':
   main()
