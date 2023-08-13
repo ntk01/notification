@@ -11,18 +11,20 @@ db = firestore.client()
 jst = timezone(timedelta(hours=+9), 'JST')
 date = datetime.now(jst)
 
+n = random.choice(rand() + getAll())
+
 def rand():
   return [*range(1, 101, 1)]
-
-def setOne():
-  db.collection("numbers").add(vars(number.Number(number=getOne())))
 
 def getAll() -> list:
   docs = db.collection("numbers").stream()
   return list(map(lambda doc: doc.to_dict().get('number'), docs))
 
-def getOne():
-  return random.choice(rand() + getAll())
+n = random.choice(rand() + getAll())
+
+def setOne():
+  db.collection("numbers").add(vars(number.Number(number=n)))
 
 def getText():
-  return f'{date.ctime()}\n\n1から100までの乱数を表示。\n表示した数字はDBにセット。\n1から100までの数列にDBから取得したリストを結合して乱数を表示。\n回を重ねると偏りが見られるかの実験。\n\n今選択されたのは...{getOne()}'
+  print(getAll())
+  return f'{date.ctime()}\n\n1から100までの乱数を表示。\n表示した数字はDBにセット。\n1から100までの数列にDBから取得したリストを結合して乱数を表示。\n回を重ねると偏りが見られるかの実験。\n\n今選択されたのは...{n}'
