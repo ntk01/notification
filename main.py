@@ -18,9 +18,8 @@ oauth = OAuth1Session(
 def main(p, q):
   text = r.run()
   payload = {"text": text}
-  print(payload)
-  # res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
-  # print(res)
+  res = oauth.post("https://api.twitter.com/2/tweets", json=payload)
+  print(res)
 
 if __name__ == '__main__':
   main()

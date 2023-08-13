@@ -22,8 +22,6 @@ def addOne(n):
   db.collection("numbers").add(vars(number.Number(number=n)))
 
 def getText(n):
-  print(getAll())
-  print(n)
   return f'{date.ctime()}\n\n1から100までの乱数を表示。\n表示した数字はDBにセット。\n1から100までの数列にDBから取得したリストを結合して乱数を表示。\n回を重ねると偏りが見られるかの実験。\n\n今選択されたのは...{n}'
 
 def run():
