@@ -1,17 +1,12 @@
 from requests_oauthlib import OAuth1Session
 import os
-import random
 from googleapiclient.discovery import build
-from datetime import datetime, timezone, timedelta
 import service.random as r
 
 consumer_key = os.environ.get('CONSUMER_KEY')
 consumer_secret = os.environ.get('CONSUMER_SECRET')
 access_token = os.environ.get('ACCESS_TOKEN')
 access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
-
-jst = timezone(timedelta(hours=+9), 'JST')
-date = datetime.now(jst)
 
 oauth = OAuth1Session(
     consumer_key,
