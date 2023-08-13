@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
 import firebase_admin
 from firebase_admin import firestore
-import models.country as country
+import model.country as country
 
 app = firebase_admin.initialize_app()
 db = firestore.client()
