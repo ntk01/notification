@@ -15,7 +15,7 @@ def rand():
   return [*range(1, 101, 1)]
 
 def setOne():
-  db.collection("numbers").add(vars(number.Number(number=rand())))
+  db.collection("numbers").add(vars(number.Number(number=getOne())))
 
 def getAll() -> list:
   docs = db.collection("numbers").stream()
