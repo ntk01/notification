@@ -18,12 +18,16 @@ def getAll() -> list:
   docs = db.collection("numbers").stream()
   return list(map(lambda doc: doc.to_dict().get('number'), docs))
 
-n = random.choice(rangeList() + getAll())
-
-def setOne():
+def addOne(n):
   db.collection("numbers").add(vars(number.Number(number=n)))
 
-def getText():
+def getText(n):
   print(getAll())
   print(n)
   return f'{date.ctime()}\n\n1から100までの乱数を表示。\n表示した数字はDBにセット。\n1から100までの数列にDBから取得したリストを結合して乱数を表示。\n回を重ねると偏りが見られるかの実験。\n\n今選択されたのは...{n}'
+
+def run():
+  n = random.choice(rangeList() + getAll())
+  addOne(n)
+  return getText(n)
+  
